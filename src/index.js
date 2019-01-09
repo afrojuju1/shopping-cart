@@ -1,10 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+// Provider is a component that will wrap our App component along with a store that encapsulates
+// local state within the App component.
+import { Provider } from 'react-redux';
+import './stylesheets/index.css';
+
+import App from './components/App';
+import Store from './store';
+
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const storeInstance = Store();
+
+ReactDOM.render(
+	<Provider store={storeInstance}>
+		<App />
+	</Provider>,
+	document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
